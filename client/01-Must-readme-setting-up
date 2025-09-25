@@ -1,0 +1,2 @@
+we 1st installed vite set up and then insalled tailwind css setup by using the command npm install -D tailwindcss@3 postcss autoprefixer and npx tailwindcss init -p which is from the tailwindcss's website 
+we have downloaded all these in this folder(client)
