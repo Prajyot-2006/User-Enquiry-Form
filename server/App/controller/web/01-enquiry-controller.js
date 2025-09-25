@@ -1,3 +1,4 @@
+const { response } = require("express");
 const enquiryModel = require("../../model/01-enquiry-model");
 
 let enquiryInsert = (request , response) => {
@@ -40,4 +41,30 @@ let enquiryList = async (request , response) => {
     response.send({status : 1 , enquiryList: enquiry})
 }
 
-module.exports = {enquiryInsert , enquiryList}
+let enquiryDelete = async (request , response) => {
+    let enId = request.params.id
+    let enquiry = await enquiryModel.deleteOne({_id : enId});
+    response.send({status : 1 , message : "enquiry Deleted succesfully" , enquiry})
+}
+
+let enquirysingleRow = async (request , response) => {
+    let enId = request.params.id;
+    let enquiry = await enquiryModel.findOne({_id : enId});
+    response.send({status : 1 , enquiry})
+}
+
+
+let updateRow = async (request , response) => {
+    let enId = request.params.id;
+    let {name , email , phone , message} = request.body
+    let updateObj = {
+        name,
+        email,
+        phone,
+        message
+    }
+    let updateResponse = await enquiryModel.updateOne({_id:enId} , updateObj)
+    response.send({status : 1 , message : "enquiry updated successfully" , updateResponse})
+}
+
+module.exports = {enquiryInsert , enquiryList , enquiryDelete , enquirysingleRow , updateRow}

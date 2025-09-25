@@ -38,7 +38,7 @@ app.use(shawarma.json());
 
 // Register routes
 // Any request starting with '/api/website/enquiry' will be handled by enquiryRouter
-// Example: POST http://localhost:8000/api/website/enquiry/insert
+// Example: POST http://localhost:8020/api/website/enquiry/insert
 app.use('/api/website/enquiry' , enquiryRouter);
 
 // Connect to MongoDB using mongoose
